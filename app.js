@@ -44,39 +44,37 @@ const displayData = (data) => {
     }
     for(let el of data) {
         let showDiv = document.createElement('div');
-        showDiv.classList.add('show');
-        let name = document.createElement('h2');
-        name.append(el.name);
-        name.classList.add('showTitle');
-        let summary = document.createElement('div');
-        summary.innerHTML = el.summary;
-        summary.classList.add('summary');
-        let premiered = document.createElement('p');
-        premiered.append(el.premiered);
-        premiered.classList.add('summary');
-        let status = document.createElement('p');
-        status.append(el.status);
-        status.classList.add('summary');
-        
-        showDiv.append(name);
-
+        showDiv.classList.add('show');                 
+        if(el.name) {
+            let name = document.createElement('h2');
+            name.append(el.name);
+            name.classList.add('showTitle');
+            showDiv.append(name);
+        }
         if(el.img) {
             let newImg = document.createElement('img');
             newImg.setAttribute('src', el.img);
             newImg.classList.add('img');
             showDiv.append(newImg);
         }
-
         if(el.network) {
             let network = document.createElement('p');
             network.append(el.network);
             network.classList.add('summary');
             showDiv.append(network);
         }
-
-        showDiv.append(premiered);
-        showDiv.append(status);
-
+        if(el.premiered) {
+            let premiered = document.createElement('p');
+            premiered.append(el.premiered);
+            premiered.classList.add('summary');
+            showDiv.append(premiered);
+        }
+        if(el.status) {
+            let status = document.createElement('p');
+            status.append(el.status);
+            status.classList.add('summary');
+            showDiv.append(status);
+        }
         if(el.site) {
             let site = document.createElement('a');
             site.setAttribute('href', el.site);
@@ -84,9 +82,12 @@ const displayData = (data) => {
             site.classList.add('link');
             showDiv.append(site);
         }
-        
-        showDiv.append(summary);        
-        
+        if(el.summary) {
+            let summary = document.createElement('div');
+            summary.innerHTML = el.summary;
+            summary.classList.add('summary');  
+            showDiv.append(summary);        
+        }    
         container.append(showDiv);
     }    
 }
