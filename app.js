@@ -13,7 +13,7 @@ form.addEventListener('submit', async (e) => {
 const getData = async (title) => {
     const data = [];
     const config = { params: { q:title } }
-    const res = await axios.get(`http://api.tvmaze.com/search/shows`, config);
+    const res = await axios.get(`https://api.tvmaze.com/search/shows`, config);
     res.data.forEach((result,i) => {
         data[i] = {name: result.show.name};
         if(result.show.image) 
